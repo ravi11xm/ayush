@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from rbl-banks-2133-15-2-25.vercel.app/widget.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Jun 2025 11:48:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayush panel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #022158;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .top-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            width: 100%;
+            text-align: left;
+            position: fixed;
+            top: 0;
+          
+            z-index: 1000;
+           
+        }
+
+       
+
+        .menu-icon {
+            font-size: 24px;
+            margin-left: 10px;
+           
+            cursor: pointer;
+        }
+
+        .sidebar {
+    width: 250px;
+    background-color:#022158;
+    color: white;
+    position: fixed;
+    top: 60px;
+    left: -250px; /* Initially hidden */
+    height: calc(100% - 60px);
+    padding: 15px;
+    box-sizing: border-box;
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1001; /* Higher z-index to ensure it sits above other content */
+}
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #053e55, #046881, #11bee9, #0299be, #053e55, #046881);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+        background-color: #052c66;
+        color: white;
+    }
+
+
+        .content-box {
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 80px;
+           
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .styled-button {
+            background: linear-gradient(135deg, #053e55, #046881, #11bee9, #0299be, #053e55, #046881);
+            border: none;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            color: white;
+           
+        }
+
+        .styled-button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #5f5fa0, #2a2a4d);
+        }
+
+
+      
+
+.slider-text {
+            position: absolute;
+            white-space: nowrap;
+            font-size: 18px;
+            color: white;
+            animation: slideText 10s linear infinite;
+        }
+
+        @keyframes slideText {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -100%;
+            }
+        }
+
+        .heartbeat {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .heartbeat svg {
+            width: 100%;
+            height: 150px;
+        }
+
+        .heartbeat path {
+            fill: none;
+            stroke: #ff0000;
+            stroke-width: 2;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: heartbeatAnim 2s linear infinite;
+        }
+
+        @keyframes heartbeatAnim {
+            from {
+                stroke-dashoffset: 300;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, #11e2e2, transparent);
+            clip-path: polygon(0% 100%, 20% 60%, 40% 80%, 60% 50%, 80% 70%, 100% 40%, 100% 100%);
+            
+        }
+
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <span id="menuIcon" class="menu-icon">&#9776;</span>
+        <span style="margin-left: 10px;"></span>
+        <span class="profile-img">👤</span>
+        <div class="slider-text">Ayush Panel</div>
+        
+    </div>
+
+
+    <div id="sidebar" class="sidebar">
+        <button onclick="location.href='widget.html'">HOME</button>
+        <button onclick="location.href='fall.html'">ALL DEVICE</button>
+        <button onclick="location.href='user.html'">DATA</button>
+        <button onclick="location.href='index.html'">LOGOUT</button>
+    </div>
+    
+    <div class="content-box">
+        <!-- <h1>Welcome to Our Unique UI</h1>
+        <p>Experience the best design with smooth interactions.</p> -->
+        
+       <button class="styled-button" onclick="location.href='user.html'">📊 DATA</button>
+        <button class="styled-button" onclick="location.href='fall.html'">ALL DEVICE</button>
+        
+        <button class="styled-button" onclick="location.href='index.html'">🚪 Logout</button>
+    </div>
+
+    
+
+ 
+
+    <div class="heartbeat">
+        <svg viewBox="0 0 300 100">
+            <path d="M0 50 L20 50 L25 40 L30 60 L35 50 L55 50 L60 20 L70 80 L80 50 L100 50 L105 40 L110 60 L115 50 L135 50 L140 20 L150 80 L160 50 L180 50 L200 50 L220 50 L240 50 L260 50 L280 50 L300 50" />
+        </svg>
+    </div>
+
+    <script>
+        document.getElementById('menuIcon').addEventListener('click', () => {
+            let sidebar = document.getElementById('sidebar');
+            sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+        });
+    </script>
+
+
+
+<span>
+    
+</span>
+
+<div class="mountain"></div>
+
+
+</body>
+
+<!-- Mirrored from rbl-banks-2133-15-2-25.vercel.app/widget.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Jun 2025 11:48:13 GMT -->
+</html>

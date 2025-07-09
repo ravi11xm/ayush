@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* Basic reset */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            /* Slightly lighter dark background */
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 5px;
+        }
+
+        header,
+        .header-container {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #2a2a2a;
+            /* Header background */
+            color: #ffffff;
+            /* Header text color */
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #a3bffa;
+            /* Lighter shade for the header title */
+        }
+
+        .data-container {
+            position: relative;
+            /* Needed for absolute positioning of delete button */
+            background-color: #0800ff;
+            margin: 5px 0;
+            padding: 10px;
+            padding-bottom: 30px;
+            /* Extra space for delete button */
+            border-radius: 8px;
+        }
+
+        .property {
+            margin-bottom: 10px;
+            color: #E0E0E0;
+        }
+
+        .button {
+            background-color: #BB86FC;
+            color: #121212;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-all {
+            width: 100%;
+            max-width: 200px;
+            /* Ensures button is not too wide */
+        }
+
+        .delete-single {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: #ff5555;
+            /* Changed to a more vibrant delete color */
+        }
+
+        @media (max-width: 768px) {
+            body,
+            .header-container,
+            .data-container {
+                padding: 5px;
+            }
+            .button {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>User Data</h1>
+    </header>
+
+    <div id="data"></div>
+    <!-- Data will be appended here -->
+
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="deleteAll()" class="button delete-all">Delete All</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+
+    <script>
+const firebaseConfig = {
+ apiKey: "AIzaSyCfPOg3e3xRoNU12iUj7CDFzMqZZGNRonw",
+  authDomain: "cust-soprt.firebaseapp.com",
+  databaseURL: "https://cust-soprt-default-rtdb.firebaseio.com",
+  projectId: "cust-soprt",
+  storageBucket: "cust-soprt.firebasestorage.app",
+  messagingSenderId: "1061904694213",
+  appId: "1:1061904694213:web:cf99ef7e79e6fe2121a9ac",
+  measurementId: "G-627P0LB5KZ"
+};
+
+        firebase.initializeApp(firebaseConfig);
+
+        var dbRef = firebase.database().ref('userdata');
+        dbRef.on('value', function(snapshot) {
+            var dataElement = document.getElementById('data');
+            dataElement.innerHTML = ''; // Clear previous data
+
+            var data = snapshot.val();
+            if (data) {
+                var keys = Object.keys(data).reverse(); // Reverse the order of keys
+
+                keys.forEach(function(key) {
+                    var entry = data[key];
+                    var container = document.createElement('div');
+                    container.classList.add('data-container');
+
+                    for (var prop in entry) {
+                        if (entry.hasOwnProperty(prop)) {
+                            var value = entry[prop];
+                            if (typeof value === 'object') {
+                                value = JSON.stringify(value).replace(/[{}"]/g, '').replace(/,/g, ', ').replace(/\s/g, '');
+                            } else {
+                                value = value.toString().replace(/\s/g, '');
+                            }
+                            container.innerHTML += `<div class="property"><strong>${prop}:</strong> ${value}</div>`;
+                        }
+                    }
+
+                    // Add Delete Single button for each entry
+                    var deleteButton = document.createElement('button');
+                    deleteButton.innerText = 'Delete';
+                    deleteButton.onclick = function() {
+                        deleteSingle(key);
+                    };
+                    deleteButton.className = 'button delete-single';
+                    container.appendChild(deleteButton);
+
+                    dataElement.appendChild(container);
+                });
+            }
+        });
+
+        function deleteSingle(key) {
+            var enteredCode = prompt('Enter the code to confirm deletion:');
+            if (enteredCode === 'Done') {
+                firebase.database().ref('userdata/' + key).remove();
+            } else {
+                alert('Incorrect code, deletion cancelled.');
+            }
+        }
+
+        function deleteAll() {
+            var enteredCode = prompt('Enter the code to confirm deletion of all items:');
+            if (enteredCode === 'Done') {
+                firebase.database().ref('userdata').remove();
+            } else {
+                alert('Incorrect code, deletion cancelled.');
+            }
+        }
+    </script>
+
+    <script>
+        setTimeout(function() {
+            location.reload(true);
+        }, 300000); // Auto-refresh the page every 5 minutes
+    </script>
+</body>
+
+</html>
