@@ -1,10 +1,10 @@
 {
-  apiKey: "AIzaSyAxfZFpQyMjm1h9xdVePg5kfQev4kAhzL0",
-  authDomain: "appssss-9d9cc.firebaseapp.com",
-  databaseURL: "https://appssss-9d9cc-default-rtdb.firebaseio.com",
-  projectId: "appssss-9d9cc",
-  storageBucket: "appssss-9d9cc.firebasestorage.app",
-  messagingSenderId: "1068908410684",
-  appId: "1:1068908410684:web:eecbdda26aa9e593729039",
-  measurementId: "G-ZJYBG5Q3PR"
+   apiKey: "AIzaSyC6ZrIwThJ-peArZpH0OCF0Yq6HqJ6q5s4",
+  authDomain: "jjkkjjkjkknk.firebaseapp.com",
+  databaseURL: "https://jjkkjjkjkknk-default-rtdb.firebaseio.com",
+  projectId: "jjkkjjkjkknk",
+  storageBucket: "jjkkjjkjkknk.firebasestorage.app",
+  messagingSenderId: "522948753446",
+  appId: "1:522948753446:web:23d926d5459238a3238ee7",
+  measurementId: "G-6DGN739RE9"
 };
